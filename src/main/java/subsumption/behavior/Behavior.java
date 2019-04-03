@@ -59,7 +59,8 @@ public abstract class Behavior extends Thread {
 
 			case "Killer":
 				return new Killer(arbitrator, priority);
-
+			case "TurnLeft":
+				return new TurnLeft(arbitrator, priority);
 			default:
 				throw new RuntimeException("Unbekanntes Verhalten");
 		}

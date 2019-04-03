@@ -2,6 +2,7 @@ package subsumption.sensor;
 
 import lejos.hardware.Button;
 import subsumption.behavior.Behavior;
+import subsumption.common.Reading;
 
 public class ButtonSensor extends SubSensor
 {

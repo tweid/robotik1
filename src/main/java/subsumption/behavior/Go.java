@@ -2,6 +2,7 @@ package subsumption.behavior;
 
 import lejos.hardware.Button;
 import subsumption.arbitrator.Arbitrator;
+import subsumption.common.Reading;
 import subsumption.utility.Wish;
 
 public class Go extends Behavior {

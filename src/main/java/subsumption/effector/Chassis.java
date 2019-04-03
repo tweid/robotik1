@@ -21,6 +21,26 @@ public class Chassis extends Effector
 			motorA.stop();
 			motorD.stop();
 		}
+		else if(command == Wish.TURN_LEFT) {
+			System.out.println("Wabern!!!!");
+			motorA.stop();
+			motorD.stop();
+			motorA.backward();
+			motorD.backward();
+			try {
+				Thread.sleep(100);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			motorA.stop();
+			motorD.forward();
+			try {
+				Thread.sleep(50);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+
 	}
 
 }

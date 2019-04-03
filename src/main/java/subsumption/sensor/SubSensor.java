@@ -6,6 +6,8 @@ import subsumption.common.Reading;
 
 
 public abstract class SubSensor extends Thread {
+	public static final String BUTTON_SENSOR = "ButtonSensor";
+	public static final String COLLISION_SENSOR = "CollisionSensor";
 	private final @NotNull Behavior[] behaviors;
 
 	private final @NotNull Reading type;
@@ -24,8 +26,10 @@ public abstract class SubSensor extends Thread {
 
 	public static SubSensor make(String typeName, @NotNull Behavior[] behaviors) {
 		switch (typeName) {
-			case "ButtonSensor":
+			case BUTTON_SENSOR:
 				return new ButtonSensor(behaviors);
+			case COLLISION_SENSOR:
+				return new CollisionSensor(behaviors);
 			default:
 				new RuntimeException("unbekannter Sensortyp: " + typeName);
 				return null;
