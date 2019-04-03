@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="LejosPreferencesConfig">
+    <option name="ev3Home" value="/opt/lejos_lib/leJOS_EV3_0.9.1-beta" />
+  </component>
+</project>
