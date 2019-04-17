@@ -1,5 +1,5 @@
 package subsumption.common;
 
 public enum Reading {
-	Button, Collision
+	Button, Collision, Distance
 }

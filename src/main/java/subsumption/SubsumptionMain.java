@@ -22,18 +22,21 @@ public class SubsumptionMain
 		//fuer das nächste Verhalten.
 
 		int priority = 1;
-		Behavior[] behaviors = {
-				Behavior.make("Blink", arbitrator, priority++),
-				Behavior.make("Go", arbitrator, priority++),
-				Behavior.make("TurnLeft", arbitrator, priority++),
-				Behavior.make("Stop", arbitrator, priority++),
-				Behavior.make("Killer", arbitrator, priority++)
+				Behavior[] behaviors = {
+						Behavior.make(Behavior.BLINK, arbitrator, priority++),
+						Behavior.make(Behavior.STEER_RIGHT, arbitrator, priority),
+						Behavior.make(Behavior.STEER_LEFT, arbitrator, priority++),
+						//Behavior.make(Behavior.TURN_LEFT, arbitrator, priority++),
+						Behavior.make(Behavior.GO, arbitrator, priority++),
+						Behavior.make(Behavior.STOP, arbitrator, priority++),
+				Behavior.make(Behavior.KILLER, arbitrator, priority++)
 		};
 
 		//Konkrete Sensoren wie hier ButtonSensor erzeugen
 		SubSensor[] sensors = {
-				SubSensor.make("ButtonSensor", behaviors),
-				SubSensor.make("CollisionSensor", behaviors)
+				SubSensor.make(SubSensor.BUTTON_SENSOR, behaviors),
+				//SubSensor.make(SubSensor.COLLISION_SENSOR, behaviors),
+				SubSensor.make(SubSensor.ULTRASOUND_SENSOR, behaviors)
 		};
 
 		//Starten aller Threads

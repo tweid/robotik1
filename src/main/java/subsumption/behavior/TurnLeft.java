@@ -9,19 +9,21 @@ import subsumption.utility.Wish;
 public class TurnLeft extends Behavior {
 
     public TurnLeft(Arbitrator arbitrator, int priority) {
-        super(arbitrator, priority, Reading.Button);
+        super(arbitrator, priority, Reading.Collision);
     }
 
     @Override
     public void run() {
-        int collision = getReadingValue();
-        while (CollisionSensor.COLLISION != collision) {
-            System.out.println("Turn Left got:" + collision);
-            collision = getReadingValue();
-        }
+        while (true) {
+            int collision = getReadingValue();
+            while (CollisionSensor.COLLISION != collision) {
+//                System.out.println("Turn Left got:" + collision);
+                collision = getReadingValue();
+            }
 
-        // TODO: 03.04.19 Doesnt Reach this Point
-        sendWish(Wish.TURN_LEFT);
+//            System.out.println("Sending wishes Left turn");
+            sendWish(Wish.TURN_LEFT);
+        }
     }
 
 }

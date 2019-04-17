@@ -8,6 +8,7 @@ import subsumption.common.Reading;
 public abstract class SubSensor extends Thread {
 	public static final String BUTTON_SENSOR = "ButtonSensor";
 	public static final String COLLISION_SENSOR = "CollisionSensor";
+	public static final String ULTRASOUND_SENSOR = "UltrasoundSensor";
 	private final @NotNull Behavior[] behaviors;
 
 	private final @NotNull Reading type;
@@ -19,7 +20,7 @@ public abstract class SubSensor extends Thread {
 	}
 
 	void send(int value) {
-		System.out.println("sending type " + type + ", value=  " + value);
+		//System.out.println("sending type " + type + ", value=  " + value);
 		for (Behavior behavior : behaviors)
 			behavior.accept(type, value);
 	}
@@ -27,9 +28,14 @@ public abstract class SubSensor extends Thread {
 	public static SubSensor make(String typeName, @NotNull Behavior[] behaviors) {
 		switch (typeName) {
 			case BUTTON_SENSOR:
+				System.out.println("Button-Sensor");
 				return new ButtonSensor(behaviors);
 			case COLLISION_SENSOR:
+				System.out.println("Collision-Sensor");
 				return new CollisionSensor(behaviors);
+			case ULTRASOUND_SENSOR:
+				System.out.println("Ultrasound-Sensor");
+				return new UltrasoundSensor(behaviors);
 			default:
 				new RuntimeException("unbekannter Sensortyp: " + typeName);
 				return null;

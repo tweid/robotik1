@@ -20,5 +20,6 @@ public class Go extends Behavior {
 		}
 
 		sendWish(Wish.FORWARD);
+		sendWish(Wish.NOTHING);
 	}
 }
