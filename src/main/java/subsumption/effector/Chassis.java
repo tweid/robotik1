@@ -1,19 +1,21 @@
 package subsumption.effector;
 
+import org.jetbrains.annotations.NotNull;
 import subsumption.utility.Wish;
 import lejos.hardware.motor.EV3LargeRegulatedMotor;
 import lejos.hardware.port.MotorPort;
 import lejos.robotics.RegulatedMotor;
 
 public class Chassis extends Effector {
-    public static final double STEERING_FACTOR = 0.5;
-    public static final int STEERING_TIME = 40;
-    final RegulatedMotor motorA = new EV3LargeRegulatedMotor(MotorPort.A);
-    final RegulatedMotor motorD = new EV3LargeRegulatedMotor(MotorPort.D);
-    final float friction = 1.5f;
+    private static final double STEERING_FACTOR = 0.5;
+    private static final int STEERING_TIME = 40;
+    private static final float FRICTION = 1.5f;
+
+    private final RegulatedMotor motorA = new EV3LargeRegulatedMotor(MotorPort.A);
+    private final RegulatedMotor motorD = new EV3LargeRegulatedMotor(MotorPort.D);
 
     @Override
-    public void accept(Wish command) {
+    public void accept(final @NotNull Wish command) {
         if (command == Wish.FORWARD) {
             forward();
         } else if (command == Wish.STOP) {
@@ -70,7 +72,7 @@ public class Chassis extends Effector {
             e.printStackTrace();
         }
 
-        motorA.rotate((int) (360 * friction));
+        motorA.rotate((int) (360 * FRICTION));
         motorD.stop();
 
         forward();
