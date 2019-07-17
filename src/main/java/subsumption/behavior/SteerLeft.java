@@ -5,24 +5,16 @@ import subsumption.common.Reading;
 import subsumption.sensor.UltrasoundSensor;
 import subsumption.utility.Wish;
 
-public class SteerLeft extends Behavior {
+class SteerLeft extends Behavior {
 
-    public SteerLeft(Arbitrator arbitrator, int priority) {
+    SteerLeft(Arbitrator arbitrator, int priority) {
         super(arbitrator, priority, Reading.Distance);
     }
 
     @Override
-    public void run() {
-        while (true) {
-            int distance = getReadingValue();
-            while (UltrasoundSensor.TOO_CLOSE != distance) {
-//                System.out.println("SteerLeft got:" + distance);
-                distance = getReadingValue();
-            }
-
-//            System.out.println("Sending wishes SteerLeft");
+    void onAccept(final int distanceValue) {
+        if (distanceValue == UltrasoundSensor.TOO_CLOSE) {
             sendWish(Wish.STEER_LEFT);
         }
     }
-
 }

@@ -12,17 +12,9 @@ public class SteerRight extends Behavior {
     }
 
     @Override
-    public void run() {
-        while (true) {
-            int distance = getReadingValue();
-            while (UltrasoundSensor.TOO_FAR != distance) {
-//                System.out.println("SteerRight got:" + distance);
-                distance = getReadingValue();
-            }
-
-//            System.out.println("Sending wishes SteerRight");
+    void onAccept(final int distanceValue) {
+        if (distanceValue == UltrasoundSensor.TOO_FAR) {
             sendWish(Wish.STEER_RIGHT);
         }
     }
-
 }

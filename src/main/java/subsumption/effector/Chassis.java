@@ -25,11 +25,10 @@ public class Chassis extends Effector {
         } else if (command == Wish.STEER_RIGHT) {
             steerRight();
         }
-
     }
 
     private void steerRight() {
-        System.out.println("steerRight");
+        //System.out.println("steerRight");
         int originSpeed = motorA.getSpeed();
         motorA.setSpeed((int) (originSpeed * STEERING_FACTOR));
         try {
@@ -41,7 +40,7 @@ public class Chassis extends Effector {
     }
 
     private void steerLeft() {
-        System.out.println("steerLeft");
+        //System.out.println("steerLeft");
         int originSpeed = motorD.getSpeed();
         motorD.setSpeed((int) (originSpeed * STEERING_FACTOR));
         try {

@@ -5,16 +5,18 @@ import subsumption.arbitrator.Arbitrator;
 import subsumption.common.Reading;
 import subsumption.utility.Wish;
 
-public class Stop extends Behavior {
+class Stop extends Behavior {
 
-	public Stop(Arbitrator arbitrator, int priority) {
-		super(arbitrator, priority, Reading.Button);
-	}
+    Stop(final Arbitrator arbitrator, final int priority) {
+        super(arbitrator, priority, Reading.Button);
+    }
 
-	@Override
-	public void run() {
-		while (getReadingValue() != Button.ID_DOWN);
-		sendWish(Wish.STOP);
-		sendWish(Wish.LEDOFF);
-	}
+    @Override
+    void onAccept(final int buttonValue) {
+        if (buttonValue == Button.ID_DOWN) {
+            sendWish(Wish.STOP);
+            sendWish(Wish.LEDOFF);
+            sendWish(Wish.NOTHING);
+        }
+    }
 }

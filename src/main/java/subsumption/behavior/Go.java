@@ -7,19 +7,15 @@ import subsumption.utility.Wish;
 
 public class Go extends Behavior {
 
-	public Go(Arbitrator arbitrator, int priority) {
+	Go(Arbitrator arbitrator, int priority) {
 		super(arbitrator, priority, Reading.Button);
 	}
 
 	@Override
-	public void run() {
-		int button = getReadingValue();
-		while (button != Button.ID_ENTER) {
-			System.out.println("Go got:" + button);
-			button = getReadingValue();
+	void onAccept(final int buttonValue) {
+		if (buttonValue != Button.ID_ENTER) {
+			sendWish(Wish.FORWARD);
+			sendWish(Wish.NOTHING);
 		}
-
-		sendWish(Wish.FORWARD);
-		sendWish(Wish.NOTHING);
 	}
 }

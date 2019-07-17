@@ -1,6 +1,5 @@
 package subsumption.sensor;
 
-import lejos.hardware.Button;
 import lejos.hardware.port.SensorPort;
 import lejos.hardware.sensor.EV3TouchSensor;
 import lejos.hardware.sensor.SensorModes;
@@ -8,8 +7,7 @@ import lejos.robotics.SampleProvider;
 import subsumption.behavior.Behavior;
 import subsumption.common.Reading;
 
-public class CollisionSensor extends SubSensor
-{
+public class CollisionSensor extends SubSensor {
     public static final int COLLISION = 1;
     public static final int NO_COLLISION = 0;
     private final float[] floats;
@@ -24,8 +22,8 @@ public class CollisionSensor extends SubSensor
         floats = new float[1];
     }
 
-    public void run(){
-        while (true){
+    public void run() {
+        while (true) {
             touch1.fetchSample(floats, 0);
             if (floats[0] == COLLISION) {
                 send(COLLISION);

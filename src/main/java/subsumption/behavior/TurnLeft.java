@@ -6,24 +6,16 @@ import subsumption.common.Reading;
 import subsumption.sensor.CollisionSensor;
 import subsumption.utility.Wish;
 
-public class TurnLeft extends Behavior {
+class TurnLeft extends Behavior {
 
-    public TurnLeft(Arbitrator arbitrator, int priority) {
+    TurnLeft(final Arbitrator arbitrator, final int priority) {
         super(arbitrator, priority, Reading.Collision);
     }
 
     @Override
-    public void run() {
-        while (true) {
-            int collision = getReadingValue();
-            while (CollisionSensor.COLLISION != collision) {
-//                System.out.println("Turn Left got:" + collision);
-                collision = getReadingValue();
-            }
-
-//            System.out.println("Sending wishes Left turn");
+    void onAccept(int collisionValue) {
+        if (collisionValue == CollisionSensor.COLLISION) {
             sendWish(Wish.TURN_LEFT);
         }
     }
-
 }
